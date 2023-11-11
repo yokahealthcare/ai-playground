@@ -1,34 +1,36 @@
 import multiprocessing
-from multiprocessing import Process
+from multiprocessing import Pool
 import os
 import math
+import time
 
 
-def calc(tasks):
-    print(tasks)
-    for i in range(400000000):
-        math.sqrt(i)
+def square(x):
+    start = time.time()
+    res = 0
+    for i in range(10000000):
+        res += x * x * i
+
+    end = time.time()
+    print(f"Square of {x} execution finish {end - start}")
+    return res
 
 
-# processes = []
-#
-# for i in range(os.cpu_count()-3):
-#     print(f"registering process {i}")
-#     processes.append(Process(target=calc))
-#
-# for process in processes:
-#     process.start()
-#
-# for process in processes:
-#     process.join()
+if __name__ == "__main__":
+    # Create a Pool with 4 worker processes
+    start = time.time()
+    with Pool(processes=4) as pool:
+        # Define a list of inputs
+        inputs = [i for i in range(1, 100)]
 
+        # Use the imap method to apply the square function to each input in parallel
+        results = pool.imap(square, inputs)
 
-pool = multiprocessing.Pool(processes=os.cpu_count())
-tasks = ["Task A", "Task B", "Task C"]
+        # Print the results
+        print("Results from parallel execution:")
+        for result in results:
+            print(result)
 
-pool.map(calc, tasks)
-
-pool.close()
-pool.join()
-
-print("Main Program continue")
+    end = time.time()
+    print()
+    print(f"overall execution time {end - start}")
