@@ -1,5 +1,7 @@
 import cv2
 import ffmpegcv
+
+import os
 import multiprocessing
 from queue import Empty
 
@@ -56,7 +58,7 @@ class VideoWriter:
 
 class OpenCVVideoCapture:
     def __init__(self):
-        self.cap = cv2.VideoCapture(0)
+        self.cap = cv2.VideoCapture("assets/videos/daylight_480p.mp4")
 
     def __enter__(self):
         return self
@@ -94,5 +96,11 @@ if __name__ == "__main__":
 
     # Cleanup: close the OpenCV window, stop writing, and join the multiprocessing process
     cv2.destroyAllWindows()
+    print("cv2 windows all destroyed")
     vwrite.stop()
+    print("vwrite stopped")
+    print("process join...")
     p1.join()
+    print("process finished")
+    # os._exit(0)
+

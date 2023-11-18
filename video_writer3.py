@@ -62,7 +62,7 @@ def get_frame(queue):
     Yields:
         numpy.ndarray: Captured frames.
     """
-    cap = cv2.VideoCapture(0)
+    cap = cv2.VideoCapture("assets/videos/daylight_480p.mp4")
     try:
         while True:
             ret, frame = cap.read()

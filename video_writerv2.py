@@ -43,7 +43,7 @@ if __name__ == '__main__':
 
     # second process
     # open cam
-    cap = cv2.VideoCapture(0)
+    cap = cv2.VideoCapture("assets/videos/daylight_480p.mp4")
     while True:
         ret, frame = cap.read()
         if not ret:
