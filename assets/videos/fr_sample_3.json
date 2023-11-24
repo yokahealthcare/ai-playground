@@ -1,0 +1,62 @@
+{
+    "method": "OnEventNotify",
+    "params": {
+            "sendTime": "2023-09-29T13:06:58+07:00",
+            "ability": "event_face_match",
+            "events": [
+                    {
+                            "eventId": "828536796BCF4CE2A81DBD5EE0CA5C23",
+                            "srcIndex": "11",
+                            "srcType": "camera",
+                            "srcName": "Kamera-1",
+                            "eventType": 131659,
+                            "status": 0,
+                            "happenTime": "2023-09-29T13:06:58+07:00",
+                            "data": {
+                                    "dataType": "faceMatch",
+                                    "alarmResult": {
+                                            "faces": {
+                                                    "identify": {
+                                                            "candidate": {
+                                                                    "human_id": "4",
+                                                                    "blacklist_id": "4",
+                                                                    "human_data": {
+                                                                            "face_pic_url": "04744deebaf9f81f64601dfe44b642e1a19d0c15b4866aa081f6cdd63f0bf14a6"
+                                                                    },
+                                                                    "reserve_field": {
+                                                                            "name": "DDDDDD"
+                                                                    },
+                                                                    "similarity": 97
+                                                            }
+                                                    },
+                                                    "URL": "Dev://picture/Streaming/tracks/203/?name=ch0002_00010000019043409254400147329&size=147329&DEVICE=6&TYPE=0&VSM=0",
+                                                    "faceRect": {
+                                                            "height": 0.4,
+                                                            "width": 0.1,
+                                                            "x": 0.55,
+                                                            "y": 0.5
+                                                    },
+                                                    "age": {
+                                                            "ageGroup": 5
+                                                    },
+                                                    "gender": {
+                                                            "value": 1
+                                                    },
+                                                    "temperature": {
+                                                            "temperatureData": 0.0,
+                                                            "temperatureStatus": -1
+                                                    },
+                                                    "mask": {
+                                                            "wearMaskStatus": 2
+                                                    }
+                                            },
+                                            "targetAttrs": {
+                                                    "cameraIndexCode": "11",
+                                                    "faceTime": "2023-09-29T13:06:58+07:00"
+                                            }
+                                    }
+                            }
+                    }
+            ]
+    }
+}
