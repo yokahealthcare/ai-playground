@@ -4,6 +4,7 @@ import ffmpegcv
 
 import multiprocessing
 from multiprocessing import Process, Queue
+from queue import Empty
 
 # Settings for writer
 FPS_DEFAULT = 25
@@ -46,20 +47,17 @@ class NewVideoWriter(Process):
 
         # Initiating loop for the process
         for _ in tqdm(iterable=iter(int, 1), desc="Video Writing Process", unit=" frame", leave=False):
-            data = self.qq.get(timeout=1)
-            if data is None:
-                # Release writer if stop_event is set (or occur)
-                self.writer.release()
-                print("\nDone.\n")
-                return
-
             try:
+                data = self.qq.get(timeout=1)
+                if data is None:
+                    # Release writer if stop_event is set (or occur)
+                    self.writer.release()
+                    print("\nDone.\n")
+                    return
                 # Write frame to writer
                 self.writer.write(data)
-            except Exception as e:
-                print("Error writing video")
-                print(f"{e}")
-                return
+            except Empty:
+                print("Waiting for frame to write...")
 
 
 class OpenCVVideoCapture:
