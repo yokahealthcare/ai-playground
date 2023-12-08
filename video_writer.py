@@ -93,7 +93,6 @@ if __name__ == "__main__":
     streaming_process.start()
     print("streaming process running...")
 
-
     # Wait for the streaming process to finish (when 'q' is pressed)
     print("streaming process join...")
     streaming_process.join()
